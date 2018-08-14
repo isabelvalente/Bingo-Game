@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bingo
@@ -8,16 +9,40 @@ namespace Bingo
     {
         static void Main(string[] args)
         {
-
+            //Generate 50 random numbers to be called out
             Random randNum = new Random();
-            int[] test2 = Enumerable
-                .Repeat(0, 25)
-                .Select(i => randNum.Next(1, 99))
+            int[] bingoNum = Enumerable
+                .Repeat(0, 50)
+                .Select(i => randNum.Next(1, 50))
                 .ToArray();
-            foreach (var entry in test2)
+            foreach (var entry in bingoNum)
             {
-                Console.WriteLine(entry);
+                Console.WriteLine("The chosen number is " + entry);
             }
+
+            //Player chooses their numbers
+            List<int> arr = new List<int>();
+            Console.WriteLine("Choose your the numbers");
+            for (int i = 0; i < 5; i++)
+                arr.Add(int.Parse(Console.ReadLine()));
+            Console.WriteLine(" Your numbers are \n");
+            foreach (int v in arr)
+                Console.WriteLine("{0}\n", v);
+            int[] playerNums = arr.ToArray();
+
+            //Match player number with chosen numbers
+            for (int i = 0; i < bingoNum.Length; i++)
+            {
+                for (int j = 0; j < playerNums.Length; j++)
+                {
+                    if (bingoNum[i]==playerNums[j])
+                    {
+                        Console.WriteLine(bingoNum[i] + " is a match");
+                    }
+
+                }
+            }
+
         }
     }
 }
