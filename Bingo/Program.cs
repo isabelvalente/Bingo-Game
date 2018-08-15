@@ -15,6 +15,7 @@ namespace Bingo
                 .Repeat(0, 50)
                 .Select(i => randNum.Next(1, 50))
                 .ToArray();
+            Console.WriteLine(bingoNum);
             foreach (var entry in bingoNum)
             {
                 Console.WriteLine("The chosen number is " + entry);
@@ -30,20 +31,24 @@ namespace Bingo
                 Console.WriteLine("{0}\n", v);
             int[] playerNums = arr.ToArray();
 
+
             //Match player number with chosen numbers
-            for (int i = 0; i < bingoNum.Length; i++)
+bourner            for (int i = 0; i < bingoNum.Length; i++)
             {
                 for (int j = 0; j < playerNums.Length; j++)
                 {
-                    if (bingoNum[i]==playerNums[j])
+                    if (bingoNum[i] == playerNums[j])
                     {
                         Console.WriteLine(bingoNum[i] + " is a match");
                     }
-
                 }
             }
 
+            //Bingo is declared if 5 cards match
+
         }
+
     }
 }
+
 
